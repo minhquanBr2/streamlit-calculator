@@ -3,6 +3,7 @@ import re
 
 
 OPERATORS = ["+", "-", "*", "/"]
+NUMS = "0123456789"
 
 # Initialize the calculator's state
 if "current_expression" not in st.session_state:
@@ -122,7 +123,6 @@ st.markdown(
 
 # Regular buttons
 cols = st.columns(4)
-nums = "0123456789"
 
 for i, symbol in enumerate("789/456*123-0.=+"):
     with cols[i % 4]:
@@ -134,7 +134,7 @@ for i, symbol in enumerate("789/456*123-0.=+"):
             if st.button(symbol, key=symbol):
                 input_number(symbol) 
                 st.rerun()
-        elif symbol in nums:
+        elif symbol in NUMS:
             if st.button(symbol, key=symbol):
                 input_number(symbol) 
                 st.rerun()
